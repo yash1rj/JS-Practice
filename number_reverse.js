@@ -9,4 +9,12 @@ function revNum(num) {
     return rnum;
 }
 
+// Another way
+function rev_a_num(n) {
+    n+="";
+    return n.split("").reverse().join("");
+}
+
 console.log(revNum(1234));
+
+console.log(rev_a_num(4321));
