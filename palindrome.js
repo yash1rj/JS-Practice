@@ -23,13 +23,17 @@ function chkPalin2(incoming) {
     return false;
 }
 
-function Palin(incoming) {
+function Palin1(incoming) {
     if (incoming === "") {
         return "";
     }
     else {
-        return Palin(incoming.substr(1)) + incoming.charAt(0);
+        return Palin1(incoming.substr(1)) + incoming.charAt(0);
     }
+}
+
+function Palin2(incoming) {
+    return (incoming === "") ? "" : Palin2(incoming.substr(1)) + incoming.charAt(0);
 }
 
 function chkPalin3(incoming) {
@@ -42,4 +46,5 @@ function chkPalin3(incoming) {
 
 console.log(chkPalin1(inputString));
 console.log(chkPalin2(inputString));
-console.log(chkPalin3(Palin(inputString)));
+console.log(chkPalin3(Palin1(inputString)));
+console.log(chkPalin3(Palin2(inputString)));
