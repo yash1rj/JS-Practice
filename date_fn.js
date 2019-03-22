@@ -24,4 +24,4 @@ console.log(month_name(new Date("02/12/2019")));
 //set the value of year
 var todayDate = new Date();
 todayDate.setFullYear(2020);
-console.log("value of today'sDate after setFullYear",todayDate);
+console.log("value of today's Date after setFullYear",todayDate);
