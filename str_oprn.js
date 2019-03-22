@@ -9,3 +9,12 @@ for (let i=0; i<inputString.length; i++) {
 }
 
 console.log(resStr);
+
+// removing repeated characters
+function remStr(incoming) {
+    return incoming.split("").filter((item, position, self) => {
+        return self.indexOf(item) == position;
+    }).join("");
+}
+
+console.log(remStr(inputString));
