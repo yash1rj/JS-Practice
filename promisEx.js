@@ -1,7 +1,3 @@
-function display(value) {
-    console.log(value);
-}
-
 function goTrip() {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -10,6 +6,8 @@ function goTrip() {
     });
 }
 
-var val = goTrip();
-
-display(val);
+goTrip().then(
+    function display(value) {
+        console.log(value);
+    }
+);
