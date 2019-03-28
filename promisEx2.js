@@ -19,11 +19,22 @@ getTrip("ooty").then(
     }
 );
 
+
 // rejecting
 getTrip("coorg").then(
     (data) => {
         console.log(data);
     },
+    (error) => {
+        console.log(error.message);
+    }
+);
+
+// rejecting with catch
+getTrip("ootys").then(
+    (data) => {
+        console.log(data);
+    }).catch(
     (error) => {
         console.log(error.message);
     }
