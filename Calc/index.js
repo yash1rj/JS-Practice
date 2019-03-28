@@ -12,35 +12,39 @@ let ans = document.getElementById("answer");
 
 btn.addEventListener('click', () => {
     try {
-        if ((/([0-9]+)/).test(opr1.value)) {
+        if (!opr1.value.match(/^[0-9]+$/)) {
             throw new Error("Operand 1 should be a numerical value");
         }
-        else if ((/([0-9]+)/).test(opr2.value)) {
+        else if (!opr2.value.match(/^[0-9]+$/)) {
             throw new Error("Operand 2 should be a numerical value");
+        }
+        else {
+            if (addition.checked) {
+                ans.innerHTML = "Answer : ";
+                ans.innerHTML += (Number(opr1.value)+Number(opr2.value)).toFixed(3);
+                ans.style.backgroundColor = "green";
+            }
+            else if (subtraction.checked) {
+                ans.innerHTML = "Answer : ";
+                ans.innerHTML += (Number(opr1.value)-Number(opr2.value)).toFixed(3);
+                ans.style.backgroundColor = "green";
+            }
+            else if (multiplication.checked) {
+                ans.innerHTML = "Answer : ";
+                ans.innerHTML += (Number(opr1.value)*Number(opr2.value)).toFixed(3);
+                ans.style.backgroundColor = "green";
+            }
+            else if (division.checked) {
+                ans.innerHTML = "Answer : ";
+                ans.innerHTML += (Number(opr1.value)/Number(opr2.value)).toFixed(3);
+                ans.style.backgroundColor = "green";
+            }
         }
     }
     catch(error) {
-        console.log(error.message);
-    }
-    if (addition.checked) {
-        ans.innerHTML = "Answer : ";
-        ans.innerHTML += (Number(opr1.value)+Number(opr2.value)).toFixed(3);
-        ans.style.backgroundColor = "green";
-    }
-    else if (subtraction.checked) {
-        ans.innerHTML = "Answer : ";
-        ans.innerHTML += (Number(opr1.value)-Number(opr2.value)).toFixed(3);
-        ans.style.backgroundColor = "green";
-    }
-    else if (multiplication.checked) {
-        ans.innerHTML = "Answer : ";
-        ans.innerHTML += (Number(opr1.value)*Number(opr2.value)).toFixed(3);
-        ans.style.backgroundColor = "green";
-    }
-    else if (division.checked) {
-        ans.innerHTML = "Answer : ";
-        ans.innerHTML += (Number(opr1.value)/Number(opr2.value)).toFixed(3);
-        ans.style.backgroundColor = "green";
+        ans.innerHTML = error.message;
+        ans.style.backgroundColor = "red";
+        
     }
 })
 
