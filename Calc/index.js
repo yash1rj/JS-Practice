@@ -12,16 +12,24 @@ let ans = document.getElementById("answer");
 
 btn.addEventListener('click', () => {
     if (addition.checked) {
-        ans.innerHTML = Number(opr1.value)+Number(opr2.value);
+        ans.innerHTML = "Answer : ";
+        ans.innerHTML += (Number(opr1.value)+Number(opr2.value)).toFixed(3);
+        ans.style.backgroundColor = "green";
     }
     else if (subtraction.checked) {
-        ans.innerHTML = Number(opr1.value)-Number(opr2.value);
+        ans.innerHTML = "Answer : ";
+        ans.innerHTML += (Number(opr1.value)-Number(opr2.value)).toFixed(3);
+        ans.style.backgroundColor = "green";
     }
     else if (multiplication.checked) {
-        ans.innerHTML = Number(opr1.value)*Number(opr2.value);
+        ans.innerHTML = "Answer : ";
+        ans.innerHTML += (Number(opr1.value)*Number(opr2.value)).toFixed(3);
+        ans.style.backgroundColor = "green";
     }
     else if (division.checked) {
-        ans.innerHTML = Number(opr1.value)/Number(opr2.value);
+        ans.innerHTML = "Answer : ";
+        ans.innerHTML += (Number(opr1.value)/Number(opr2.value)).toFixed(3);
+        ans.style.backgroundColor = "green";
     }
 })
 
