@@ -27,34 +27,50 @@ btn.addEventListener('click', () => {
         else {
             if (addition.checked) {
                 ans.innerHTML = "Answer : ";
-                ans.innerHTML += (Number(opr1.value)+Number(opr2.value)).toFixed(3);
+                let res = Number(opr1.value)+Number(opr2.value);
+                if ( (res <= -100000) || (res >= 100000) ) {
+                    throw new Error("Result out of bounds");
+                }
+                ans.innerHTML += (res).toFixed(3);
                 ans.style.backgroundColor = "green";
-                ans.style.textAlign ="center";
+                ans.style.textAlign = "center";
             }
             else if (subtraction.checked) {
                 ans.innerHTML = "Answer : ";
-                ans.innerHTML += (Number(opr1.value)-Number(opr2.value)).toFixed(3);
+                let res = Number(opr1.value)-Number(opr2.value);
+                if ( (res <= -100000) || (res >= 100000) ) {
+                    throw new Error("Result out of bounds");
+                }
+                ans.innerHTML += (res).toFixed(3);
                 ans.style.backgroundColor = "green";
-                ans.style.textAlign ="center";
+                ans.style.textAlign = "center";
             }
             else if (multiplication.checked) {
                 ans.innerHTML = "Answer : ";
-                ans.innerHTML += (Number(opr1.value)*Number(opr2.value)).toFixed(3);
+                let res = Number(opr1.value)*Number(opr2.value);
+                if ( (res <= -100000) || (res >= 100000) ) {
+                    throw new Error("Result out of bounds");
+                }
+                ans.innerHTML += (res).toFixed(3);
                 ans.style.backgroundColor = "green";
-                ans.style.textAlign ="center";
+                ans.style.textAlign = "center";
             }
             else if (division.checked) {
                 ans.innerHTML = "Answer : ";
-                ans.innerHTML += (Number(opr1.value)/Number(opr2.value)).toFixed(3);
+                let res = Number(opr1.value)/Number(opr2.value);
+                if ( (res <= -100000) || (res >= 100000) ) {
+                    throw new Error("Result out of bounds");
+                }
+                ans.innerHTML += (res).toFixed(3);
                 ans.style.backgroundColor = "green";
-                ans.style.textAlign ="center";
+                ans.style.textAlign = "center";
             }
         }
     }
     catch(error) {
         ans.innerHTML = error.message;
         ans.style.backgroundColor = "red";
-        ans.style.textAlign ="center";
+        ans.style.textAlign = "center";
         
     }
 })
