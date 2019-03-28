@@ -15,10 +15,10 @@ btn.addEventListener('click', () => {
         if (opr1.value == "" || opr2.value == "") {
             throw new Error("Input all values");
         }
-        else if (!opr1.value.match(/^[0-9]+$/)) {
+        else if (!opr1.value.match(/^-?[0-9]+$/)) {
             throw new Error("Operand 1 should be a numerical value");
         }
-        else if (!opr2.value.match(/^[0-9]+$/)) {
+        else if (!opr2.value.match(/^-?[0-9]+$/)) {
             throw new Error("Operand 2 should be a numerical value");
         }
         else if (opr2.value == 0) {
