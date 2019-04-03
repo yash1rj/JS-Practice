@@ -44,6 +44,8 @@ fetch('./user.json')
     }))
     // triggers after 3 seconds
     .then(githubUser => alert(`Finished showing ${githubUser.name}`));
+    .catch(err => alert(err.message)); //Normally, .catch doesn’t trigger at all, because there are no errors. 
+    // But if any of the promises above rejects (a network problem or invalid json or whatever), then it would catch it.
 
 // part2end
 
