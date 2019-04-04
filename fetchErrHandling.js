@@ -6,11 +6,11 @@
 // What if there’s no such user, and github returns a page with error 404 at (**)?
 
 
-fetch('no-such-user.json') // (*)
-  .then(response => response.json())
-  .then(user => fetch(`https://api.github.com/users/${user.name}`)) // (**)
-  .then(response => response.json())
-  .catch(alert);
+// fetch('no-such-user.json') // (*)
+//   .then(response => response.json())
+//   .then(user => fetch(`https://api.github.com/users/${user.name}`)) // (**)
+//   .then(response => response.json())
+//   .catch(alert);
 
 // As of now, the code tries to load the response as JSON no matter what and dies with a syntax error. 
 // You can see that by running the example above, as the file no-such-user.json doesn’t exist.
@@ -20,16 +20,14 @@ fetch('no-such-user.json') // (*)
 // So let’s add one more step: we should check the response.status property that has HTTP status, 
 // and if it’s not 200, then throw an error.
 
-function loadJson(url) {
-    return fetch(url)
-        .then(response => {
-            if(response.status == 200) {
-                return response.json();
-            }
-            else {
-                throw new HttpError(response);
-            }
-        })
+async function loadJson(url) {
+    const response = await fetch(url);
+    if (response.status == 200) {
+        return response.json();
+    }
+    else {
+        throw new HttpError(response);
+    }
 }
 
 class HttpError extends Error {
@@ -40,8 +38,8 @@ class HttpError extends Error {
     }
 }
 
-loadJson('no-such-user.json')
-    .catch(alert);
+// loadJson('no-such-user.json')
+//     .catch(alert);
 
 // We make a custom class for HTTP Errors to distinguish them from other types of errors. 
 // Besides, the new class has a constructor that accepts response object and saves it in the error. 
@@ -49,3 +47,41 @@ loadJson('no-such-user.json')
 // Then we put together the requesting and error-handling code into a function that fetches the url and 
 // treats any non-200 status as an error. That’s convenient, because we often need such logic.
 // Now alert shows better message.
+
+// The great thing about having our own class for errors is that we can easily check for it in error-handling code.
+
+// For instance, we can make a request, and then if we get 404 – ask the user to modify the information.
+
+// The code below loads a user with the given name from github. 
+// If there’s no such user, then it asks for the correct name:
+
+async function demoGithubUser() {
+    let name = prompt("Enter a name?", "yash1rj");
+
+    try {
+        const user = await loadJson(`https://api.github.com/users/${name}`);
+        alert(`Full name: ${user.name}.`);
+        return user;
+    }
+    catch (err) {
+        if (err instanceof HttpError && err.response.status == 404) {
+            alert("No such user, please reenter.");
+            return demoGithubUser();
+        }
+        else {
+            throw err; // (*)
+        }
+    }
+}
+
+demoGithubUser();
+
+// In case of an error, the promise state becomes “rejected”, 
+// and the execution should jump to the closest rejection handler. 
+// But there is no such handler in the examples above. So the error gets “stuck”.
+
+// In practice, just like with a regular unhandled errors, 
+// it means that something terribly gone wrong, the script probably died.
+
+// Most JavaScript engines track such situations and generate a global error in that case. 
+// We can see it in the console.
