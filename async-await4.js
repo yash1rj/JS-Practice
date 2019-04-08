@@ -10,8 +10,6 @@ var promiseTRSANSG = (promiseThatResolvesAfterNSecondsGenerator = function(n=0) 
     });
 });
 
-startTime = performance.now();
-
 startTime = performance.now();  //Run at the beginning of the code
 function executingAt() {
   return (performance.now() - startTime) / 1000;
