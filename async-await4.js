@@ -1,3 +1,5 @@
+const {performance} = require('perf_hooks');
+
 var promiseTRSANSG = (promiseThatResolvesAfterNSecondsGenerator = function(n=0) {
     return new Promise((resolve,reject) => {
         setTimeout(() => {
