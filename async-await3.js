@@ -30,12 +30,12 @@ async function fetchAllUsersDetailsParallelyWithStats() {
 }
 
 async function fetchSingleUsersDetailsWithStats(name) {
-    let st = "Starting API call " + " at " + executingAt();
+    let st = "Starting API call " + name + " at " + executingAt();
     console.log(st);
     divBlock.innerHTML = divBlock.innerHTML + st + "<hr>";
     userDetails = await fetch("https://api.github.com/users/" + name);
     userDetailsJSON = await userDetails.json();
-    let fd = "Finished API call " + " at " + executingAt();
+    let fd = "Finished API call " + name + " at " + executingAt();
     console.log(fd);
     divBlock.innerHTML = divBlock.innerHTML + fd + "<hr>";
     return userDetailsJSON;
