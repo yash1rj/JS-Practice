@@ -5,15 +5,25 @@ function executingAt() {
   return (performance.now() - startTime) / 1000;
 }
 
+divBlock = document.getElementById("data");
+divBlock.innerHTML = "";
+
 async function fetchUserDetailsWithStats() {
   i = 0;
   for (name of ["nkgokul", "BrendanEich", "gaearon"]) {
     i++;
-    console.log("Starting API call " + i + " at " + executingAt());
+    let st = "Starting API call " + i + " at " + executingAt();
+    console.log(st);
+    divBlock.innerHTML = divBlock.innerHTML + st + "<hr>";
     userDetails = await fetch("https://api.github.com/users/" + name);
     userDetailsJSON = await userDetails.json();
-    console.log("Finished API call " + i + "at " + executingAt());
-    console.log("userDetailsJSON", userDetailsJSON);
+    let fd = "Finished API call " + i + " at " + executingAt();
+    console.log(fd);
+    divBlock.innerHTML = divBlock.innerHTML + fd + "<hr>";
+    let details = "userDetailsJSON " + JSON.stringify(userDetailsJSON);
+    console.log(details);
+    
+    divBlock.innerHTML = divBlock.innerHTML + details + "<hr>";
   }
 }
 
