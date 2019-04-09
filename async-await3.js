@@ -9,7 +9,7 @@ divBlock.innerHTML = "";
 
 async function fetchAllUsersDetailsParallelyWithStats() {
     let singleUsersDetailsPromises = [];
-    for (name of ["nkgokul", "BrendanEich", "gaearon"]) {
+    for (name of ["nkgokul", "BrendanEich", "yash1rj"]) {
         let promise = fetchSingleUsersDetailsWithStats(name);
         let promCreateMsg = "Created Promise for API call of " + name + " at " + executingAt();
         console.log(promCreateMsg);
