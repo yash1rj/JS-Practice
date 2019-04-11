@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Dynamically create Variables</title>
+		<style>
+
+		</style>
+	</head>
+	<body>
+		Enter variable name : <input type="text" id="input1" />
+		<br><br>
+		Enter a value : <input type="text" size="5" id="input2" />
+		<br><br>
+		[Hint: Can be a number, string or boolean]
+		<br><br>
+		<input type="button" onclick="doIt()" value="Submit" />
+		<br><br>
+		<div id="output1"></div>
+		
+		<script type="text/javascript">
+			function doIt() {
+				var varName = document.getElementById("input1").value;
+				var varVal = document.getElementById("input2").value;
+				
+				if(varVal.match(/^[0-9.-]+$/) != null) { // if kind of number
+					eval("var " + varName + " = " + Number(varVal));
+				}
+				else if(varVal.match(/^[true|false]+$/) != null) {
+					eval("var " + varName + " = " + varVal);
+				}
+				else {
+					eval("var " + varName + " = " + '"' + varVal + '"');
+				}
+				document.getElementById("output1").innerHTML = "Created. " + varName + " equals " + varVal + "<br>Variable " + (eval(varName)) + " is of type " + 	typeof (eval(varName));
+			}
+		</script>
+	</body>
+</html>

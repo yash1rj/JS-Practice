@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mouse Movement</title>
+		<style>
+			#sprite1 {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 100px;
+				left: 0;
+				background-color: #ffd800;
+			}
+		</style>
+	</head>
+	<body>
+		Live Co-ordinates: <div id="output1"></div>
+		Last position: <div id="output2"></div>
+		<div id="sprite1" class="dragger" draggable="true" ondragstart="drag(this)" style="cursor: pointer;"></div>
+		
+		<script type="text/javascript">
+			// the actual coordinates of the mouse
+			var mouseX=0;
+			var mouseY=0;
+			// the starting value when object was clicked
+			var startX = 0;
+			var startY = 0;
+			// coordinates on object where it was clicked, pulled from
+			// live mouse co-ordinates in mousemove event
+			var locX = 0;
+			var locY = 0;
+			
+			document.onmousemove = function(event) {
+				locX = event.pageX;
+				locY = event.pageY;
+				document.getElementById("output1").innerHTML = "X: " + locX +" Y: " + locY;
+			}
+			
+			function drag(event) {
+				event.ondragend = function(event) {
+					var object = this.getBoundingClientRect();
+					startX = object.left;
+					startY = object.top;
+					
+					offsetX = locX - startX;
+					offsetY = locY - startY;
+					
+					mouseX = event.clientX - offsetX;
+					mouseY = event.clientY - offsetY;
+					
+					this.style.left = mouseX +"px";
+					this.style.top = mouseY +"px";
+					
+					document.getElementById("output2").innerHTML = "X: " + mouseX +" Y: " + mouseY;
+				}
+			}
+		</script>
+	</body>
+</html>
