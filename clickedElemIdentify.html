@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Identifying a clicked HTML Element</title>
+		<style>
+			p { 
+				font-size: 20px; 
+			}
+			.clickBox {
+				width: 200px;
+				height: 200px;
+			}
+			#wrapper {
+				width: 400px;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<p>Select a box : </p>
+		<div id="wrapper">
+			<div id="redBox" class="clickBox" style="background-color: #f00; float: left; text-align: center; line-height: 200px;">ID = "redBox"</div>
+			<div id="blueBox" class="clickBox" style="background-color: #00f; float: left; text-align: center; line-height: 200px;">ID = "blueBox"</div>
+			<br><br><br><br><br><br><br>
+			<div id="greenBox" class="clickBox" style="background-color: #15982c; float: left; text-align: center; line-height: 200px;">ID = "greenBox"</div>
+			<div id="yellowBox" class="clickBox" style="background-color: #ffd800; float: left; text-align: center; line-height: 200px;">ID = "yellowBox"</div>
+		</div>
+		<br><br>
+		Click an element to get it's ID.
+		<br><br>
+		<div id="output"></div>
+		<br><br>
+		<span id="text1">
+		Ye to misery wisdom plenty polite to as. Prepared interest proposal it he exercise. My wishing an in attempt ferrars. Visited eat you why service looking engaged. At place no walls hopes rooms fully in. Roof hope shy tore leaf joy paid boy. Noisier out brought entered detract because sitting sir. Fat put occasion rendered off humanity has. 
+
+		Mr do raising article general norland my hastily. Its companions say uncommonly pianoforte favourable. Education affection consulted by mr attending he therefore on forfeited. High way more far feet kind evil play led. Sometimes furnished collected add for resources attention. Norland an by minuter enquire it general on towards forming. Adapted mrs totally company two yet conduct men. 
+
+		At distant inhabit amongst by. Appetite welcomed interest the goodness boy not. Estimable education for disposing pronounce her. John size good gay plan sent old roof own. Inquietude saw understood his friendship frequently yet. Nature his marked ham wished. 
+
+		Assure polite his really and others figure though. Day age advantages end sufficient eat expression travelling. Of on am father by agreed supply rather either. Own handsome delicate its property mistress her end appetite. Mean are sons too sold nor said. Son share three men power boy you. Now merits wonder effect garret own.
+		</span>
+		
+		<script type="text/javascript">
+			document.addEventListener("mousedown", (event) => {
+				if(event.target.id == "") { //click on white space
+					document.getElementById("output").innerHTML = "";
+				}
+				else {
+					elemId = event.target.id;
+					document.getElementById("output").innerHTML = "You clicked on the element with ID : " + elemId;
+				}
+			});
+		</script>
+	</body>
+</html>
