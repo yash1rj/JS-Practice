@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Getting an HTML Element's CSS Styles</title>
+		<style>
+			p { 
+				font-size: 20px; 
+			}
+			#wrapper {
+				width: 400px;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="yellowBox" 
+			style="background-color: #ffd800;
+					width: 400px;
+					height: 400px;
+					color: black; 
+					text-align: center; 
+					line-height: 200px;">ID = "yellowBox"</div>
+		</div>
+		<br><br>
+		<input type="text" id="input1" size="10" placeholder="Enter ID">
+		<br><br>
+		<input type="text" id="input2" size="10" placeholder="Enter an attribute">
+		<br><br>
+		<input type="button" onclick="doIt()" value="GO" />
+		<br><br>
+		<span id="output"></span>
+		<br><br>
+		<div>Note1 : We can get only inline CSS Styles for the respective element.</div>
+		<div>Note2 : For style properties like "text-align", enter attribute as "textAlign"</div>
+		
+		<script type="text/javascript">
+			function doIt() {
+				var id = document.getElementById("input1").value;
+				var att = document.getElementById("input2").value;
+				
+				var attVal = 'document.getElementById("' + id + '").style.' + att;
+				// alert(attVal);
+				var result = eval(attVal);
+				
+				document.getElementById("output").innerHTML = id + " " + att + " is " + result;
+				document.getElementById("output").style = "background-color: green;"
+			}
+		</script>
+	</body>
+</html>
