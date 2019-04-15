@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset="utf-8">
+		<title>Drawing a Rectangle on HTML5 Canvas</title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="200" height="200" style="border: 1px solid #ff0000;"></canvas>
+		<br><br>
+		x: <input type="text" id="x" size="5">
+		y: <input type="text" id="y" size="5">
+		<br><br>
+		width: <input type="text" id="w" size="5">
+		height: <input type="text" id="h" size="5">
+		<br><br>
+		color: <input type="text" id="color" size="5">
+		<br><br>
+		<input type="button" onclick="doIt()" value="GO" />
+		
+		<script type="text/javascript">
+			function doIt() {
+				var x = document.getElementById("x").value;
+				var y = document.getElementById("y").value;
+				var w = document.getElementById("w").value;
+				var h = document.getElementById("h").value;
+				var color = document.getElementById("color").value;
+				
+				var canvas = document.getElementById("myCanvas");
+				var context = canvas.getContext("2d");
+				context.fillStyle = color;
+				context.fillRect(x,y,w,h);
+			}
+		</script>
+	</body>
+</html>
