@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Manipulating the HTML5 Canvas</title>
+	</head>
+	<body>
+		<canvas id="newCanvas" width="800" height="500" style="border: 1px solid #ff0000;"></canvas>
+		
+		<script type="text/javascript">
+			var c = document.getElementById("newCanvas");
+			var ctx = c.getContext("2d");
+			var grd = ctx.createRadialGradient(400,250,50,400,250,400);
+			grd.addColorStop(0, "#ffff00");
+			grd.addColorStop(1, "#0000ff");
+			ctx.fillStyle = grd;
+			ctx.fillRect(10,10,775,475);
+			// ctx.strokeRect(10,10,775,475);
+		</script>
+	</body>
+</html>
