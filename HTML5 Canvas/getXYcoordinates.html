@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Retrieving X and Y co-ordinates of an HTML Element</title>
+		<style>
+			p { 
+				font-size: 20px; 
+			}
+			.clickBox {
+				width: 200px;
+				height: 200px;
+			}
+			#wrapper {
+				width: 400px;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<p>Select a box : </p>
+		<div id="wrapper">
+			<div id="redBox" class="clickBox" style="background-color: #f00; float: left; text-align: center; line-height: 200px;" onclick="doIt(this)">ID = "redBox"</div>
+			<div id="blueBox" class="clickBox" style="background-color: #00f; float: left; text-align: center; line-height: 200px;" onclick="doIt(this)">ID = "blueBox"</div>
+			<br><br><br><br><br><br><br>
+			<div id="greenBox" class="clickBox" style="background-color: #15982c; float: left; text-align: center; line-height: 200px;" onclick="doIt(this)">ID = "greenBox"</div>
+			<div id="yellowBox" class="clickBox" style="background-color: #ffd800; float: left; text-align: center; line-height: 200px;" onclick="doIt(this)">ID = "yellowBox"</div>
+		</div>
+		<br><br>
+		Click a box to get it's co-ordinates.
+		<br><br>
+		<div id="output" onclick="doIt(this)"></div>
+		<br><br>
+		<span id="text1">
+		
+		</span>
+		
+		<script type="text/javascript">
+			document.addEventListener("mousedown", (event) => {
+				if(event.target.id == "") { //click on white space
+					document.getElementById("output").innerHTML = "";
+				}
+			});
+			function doIt(elem) {
+				var elemId = elem.id;
+				var object = elem.getBoundingClientRect();
+				var xVal = object.left;
+				var yVal = object.top;
+				document.getElementById("output").innerHTML = elemId + " : X: " + xVal + " Y: " + yVal;
+			}
+		</script>
+	</body>
+</html>
