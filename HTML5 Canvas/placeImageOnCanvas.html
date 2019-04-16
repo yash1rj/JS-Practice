@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset="utf-8">
+		<title>Placing images on HTML5 Canvas</title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500" style="border: 1px solid #ff0000;"></canvas>
+		<br><br>
+		Scale %: <input type="text" id="scale" size="3">
+		<br><br>
+		<input type="button" onclick="doIt()" value="GO" />
+		<input type="button" onclick="clearCanvas()" value="CLEAR" />
+		
+		<script type="text/javascript">
+			function doIt() {
+				var scale = document.getElementById("scale").value / 100;
+				
+				var canvas = document.getElementById("myCanvas");
+				var context = canvas.getContext("2d");
+				
+				var imgToDraw = new Image();
+				imgToDraw.src = "black.jpg";
+				
+				var imgWidth = imgToDraw.width * scale;
+				var imgHeight = imgToDraw.height * scale;
+				
+				context.drawImage(imgToDraw,0,0,imgWidth,imgHeight);
+			}
+			function clearCanvas() {
+				var canvas = document.getElementById("myCanvas");
+				var context = canvas.getContext("2d");
+				context.clearRect(0,0, canvas.width, canvas.height);
+			}
+		</script>
+	</body>
+</html>
