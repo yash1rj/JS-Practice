@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset="utf-8">
+		<title>Getting child object content and attributes</title>
+	</head>
+	<body>
+		<div id="mainDiv" style="width: 200px; height: 100px; background-color: #ffd800;" onclick="getChildren('mainDiv')">
+			<div id="child1" value="child1">This is 1</div>
+			<div id="child2">This is 2</div>
+			<div id="child3">This is 3</div>
+			<div id="child4">This is 4</div>
+			<div id="child5">This is 5</div>
+		</div>
+		<br>
+		<h1>Modes of transport:</h1>
+		<ul id="list1">
+			<li>car</li>
+			<li>bike</li>
+			<li>cycle</li>
+			<li>train</li>
+			<li>ship</li>
+			<li>rocket</li>
+			<li>scooty</li>
+		</ul>
+		<br>
+		<input type="button" onclick="getChildren('list1')" value ="Get children" />
+		<br>
+		<hr>
+		<span id="output"></span>
+		
+		<script type="text/javascript">
+			function getChildren(elem) {
+				res1 = "";
+				res2 = "";
+				
+				document.getElementById("output").innerHTML = "";
+				
+				var object1 = document.getElementById(elem).childNodes;
+				var object2 = document.getElementById(elem);
+				
+				for (var i=0; i < object1.length; i++) {
+					res1 += object1[i].nodeName + " " + object1[i].nodeType + " " + object1[i].nodeValue + "<br>"; 
+				}
+				
+				for (var i=0; i < object2.children.length; i++) {
+					res2 += object2.children[i].textContent + "<br>"; 
+				}
+				
+				document.getElementById("output").innerHTML = res1 + " " + res2;
+			}
+		</script>
+	</body>
+</html>
