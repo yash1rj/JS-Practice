@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset="utf-8">
+		<title>Drawing text on the HTML5 Canvas</title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="300" style="border: 1px solid #000000;"></canvas>
+		<br><br>
+		Text: <input type="text" id="txtString" size="50" />
+		<br><br>
+		<label name="fill">
+		Fill Style: 
+		<input type="radio" name="fill" value="Yes" id="fill_0">
+		fillText</label>
+		<label>
+		<input type="radio" name="fill" value="No" id="fill_1">
+		strokeText</label>
+		<br><br>
+		Font: <input type="text" id="font" size="50" />
+		<br><br>
+		Color: <input type="text" id="color" size="15" />
+		<br><br>
+		x: <input type="text" id="x" size="5">
+		y: <input type="text" id="y" size="5">
+		<br><br>
+		<input type="button" onclick="doIt()" value="GO" />
+		
+		<script type="text/javascript">
+			function doIt() {
+				var txtString = document.getElementById("txtString").value;
+				var font = document.getElementById("font").value;
+				var color = document.getElementById("color").value;
+				var x = document.getElementById("x").value;
+				var y = document.getElementById("y").value;
+				
+				var canvas = document.getElementById("myCanvas");
+				var context = canvas.getContext("2d");
+				
+				context.font = font;
+				
+				if (document.getElementById("fill_0").checked) {
+					context.fillStyle = color;
+					context.beginPath(); // get the pen ready for drawing
+					context.fillText(txtString,x,y);
+				}
+				else {
+					context.strokeStyle = color;
+					context.beginPath(); // get the pen ready for drawing
+					context.strokeText(txtString,x,y);
+				}
+			}
+		</script>
+	</body>
+</html>
