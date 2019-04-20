@@ -1,0 +1,20 @@
+{
+    "Karnataka": [
+        "Mysore",
+        "Bangalore",
+        "Hubli",
+        "Shimoga",
+        "Mangalore"
+    ],
+    "Bihar": [
+        "Patna",
+        "Gaya",
+        "Bhagalpur",
+        "Buxar"
+    ],
+    "Kerala": [
+        "Trivandrum",
+        "Kochi",
+        "Kannur"
+    ]
+}
