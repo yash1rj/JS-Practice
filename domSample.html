@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>DOM Sample</title>
+    </head>
+    <body>
+        <form id="login">
+            Username : <input type="text" id="u_name" placeholder="Enter your username">
+            <br>
+            Password : <input type="text" id="pwd" maxlength="10">
+            <br>
+            Organization : <input type="text" id="company" value="CTS" disabled>
+        </form>
+
+        <script type="text/javascript">
+            console.log(document.getElementById("company").value);
+            console.log(document.getElementById("u_name").getAttribute("placeholder"));
+
+            // All elements are stored as arrays.
+            // We can also access based on index positions
+
+            console.log(document.forms[0].elements[1].getAttribute("maxlength"));
+            console.log(document.forms[0].elements[2].disabled);
+        </script>
+    </body>
+</html>
