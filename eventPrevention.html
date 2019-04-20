@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Prevention</title>
+</head>
+<body>
+    <form onsubmit="display(event)">
+        Username: <input id="usr">
+        <button type="submit">Login</button>
+        <div id="msg"></div>
+    </form>
+    <script>
+        function display(e){
+            if(document.getElementById("usr").value.length<6){
+                document.getElementById("msg").innerText="Username must be atleast 6 chars"
+                e.preventDefault();
+            }
+        }
+    </script>
+        
+</body>
+</html>
