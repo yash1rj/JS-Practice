@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <title>DOM and AJAX</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <form action="register()" method="GET">
+                        <div class="form-group">
+                            <label for="state">State: </label>
+                            <select id="state" class="form-control">
+                                <option value="">--SELECT--</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Kerala">Kerala</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">City: </label>
+                            <input id="city" class="form-control" type="text" onblur="getCity()">
+                        </div>
+
+                        <span id="cityError" class="font-weight-bold"></span>
+                        <span id="citySuccess" class="font-weight-bold"></span>
+
+                        <div>
+                            <input type="submit" class="btn btn-primary" value="Submit" id="btn">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script>
+            function getCity() {
+                var state = document.getElementById("state").value;
+                validatecity("http://127.0.0.1:5500/AJAX-demo/DOM%20and%20AJAX/state.json", state);
+            }
+    
+            function validatecity(url, state) {
+                console.log(url, state);
+                var city = document.getElementById("city").value;
+                console.log(city);
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", url);
+                xhr.onload = () => {
+                    obj = JSON.parse(xhr.responseText);
+                    var cityArr = obj[state];
+                    console.log(cityArr);
+    
+                    for(var i=0; i < cityArr.length; i++) {
+                        if(cityArr[i] == city) {
+                            document.getElementById("citySuccess").innerText = "City is present";
+                            document.getElementById("citySuccess").className = "text-success";
+                            document.getElementById("cityError").innerText = "";
+                            break;
+                        }
+                        else {
+                            document.getElementById("cityError").innerText = "Enter correct city name";
+                            document.getElementById("cityError").className = "text-danger";
+                            document.getElementById("citySuccess").innerText = "";
+                        }
+                    }
+                };
+                xhr.send();
+            }
+        </script>
+    </body>
+</html>
