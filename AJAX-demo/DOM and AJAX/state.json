@@ -16,5 +16,16 @@
         "Trivandrum",
         "Kochi",
         "Kannur"
+    ],
+    "Jharkhand": [
+        "Ranchi",
+        "Jamshedpur",
+        "Dhanbad",
+        "Bokaro"
+    ],
+    "Punjab": [
+        "Amritsar",
+        "Ludhiana",
+        "Jalandhar"
     ]
 }
