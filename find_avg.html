@@ -9,14 +9,36 @@
     <body>
         <script>
             function find_average(markList) {
-                total = 0;
+                var total = 0;
+                let marksAvg = 0;
+                if (markList.length == 0) {
+                    // console.log("n1");
+                    throw Error;
+                }
                 for(let i=0; i<markList.length; i++) {
-                    total += markList[i];
-                    marksAvg = total/markList.length;
+                    try {
+                        // console.log(markList.length);
+                        if ((/^[0-9]+$/).test(markList[i])) {
+                            // console.log("numeric");
+                            total += parseInt(markList[i]);
+                            marksAvg = total/markList.length;
+                        }
+                        else {
+                            console.log("n2");
+                            throw Error;
+                        }
+                    }
+                    catch(err) {
+                        console.log("Error: ", err.message);
+                    }
                 }
                 return marksAvg;
             }
 
+            // mList = [];
+            // m1 = "A";
+            //mList = [m1,2,3,4];
+            // mList = ["1",2,3,4];
             mList = [1,2,3,4];
             console.log("Average marks : ", find_average(mList));
         </script>
