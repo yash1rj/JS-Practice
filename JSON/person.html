@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Json Basics</title>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		
+		<script>
+			$.get("person.json.txt", function(data) {
+				console.log(data);
+				var obj = JSON.parse(data);
+				console.log(obj);
+				console.log(obj.birthDate);
+				console.log(obj.phoneNumber.work);
+				console.log(JSON.stringify(obj));
+			});
+		</script>
+	</head>
+	
+	<body>
+	
+	</body>
+	
+</html>
