@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Json VS JS</title>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		
+		<script>
+			$(function() { // jQuery ready function
+				var json_string = '{ \
+					"prop1" : false, \
+					"prop2" : null, \
+					"prop3" : 5, \
+					"prop4" : "a msg" \
+				}';
+				
+				var js_object = {
+					prop1 : false,
+					prop2 : null,
+					prop3 : 5,
+					prop4 : "a msg"
+				}
+				
+				console.log('json_string: '+ (typeof json_string));
+				console.log('js_object: '+ (typeof js_object));
+				
+				console.log('json_string: -prop4: '+json_string.prop4);
+				console.log('js_object: -prop4: '+js_object.prop4);
+				
+				console.log(JSON.parse(json_string));
+				console.log(JSON.stringify(js_object));
+			});
+		</script>
+	</head>
+	
+	<body>
+	
+	</body>
+	
+</html>
