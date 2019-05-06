@@ -1,0 +1,12 @@
+{
+	"name" : "Yash",
+	"middleName" : null,
+	"birthDate" : "22-06-1995",
+	"city" : "Pune",
+	"country" : "India",
+	"phoneNumber" : {
+		"personal" : "+91 8456486233",
+		"work" : "+91 4236521952"
+	},
+	"favNumber" : 7
+}
