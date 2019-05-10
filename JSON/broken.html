@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Json Validation</title>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		
+		<script>
+			$(function() {
+				$.get("broken.json.txt", function(data) {
+					try {
+						console.log(data);
+						var obj = JSON.parse(data);
+						console.log(obj);
+					}
+					catch(e) {  //JSON.parse throws syntax error
+						console.log("JSON Syntax error: " + (e instanceof SyntaxError));
+						console.log("On line number: " + e.LineNumber);
+						console.log("Message: " + e.message);
+					}
+				});
+			});
+		</script>
+	</head>
+	
+	<body>
+	
+	</body>
+	
+</html>
