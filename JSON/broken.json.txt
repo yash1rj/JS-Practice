@@ -1,0 +1,13 @@
+{
+	"arrOfNumbers" : [
+		1,
+		2,
+		3
+	},
+	"arrOfStrings" : [
+		"a",
+		"b",
+		"c"
+	],
+	"trueOrFalse" : true,
+}
