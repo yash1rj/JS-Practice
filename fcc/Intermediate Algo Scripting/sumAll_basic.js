@@ -11,6 +11,8 @@ function sumAll(arr) {
   return sum;
 }
 
+sumAll([1, 4]);
+
 /*
 Firstly, we create a variable called sortedArr which sorts it from the lowest to the highest value.
 firstNum is equal to the first number and lastNum is equal to the second number.
